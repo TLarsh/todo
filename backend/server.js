@@ -1,8 +1,11 @@
 import express from "express";
 // const express = require('express')
+import notesRoutes from "./routes/notesRoutes.js";
 const app = express();
 
 app.use(express.json());
+
+app.use("/api/notes", notesRoutes);
 
 // // Simple CORS middleware for local development (replace with `cors` in production)
 // app.use((req, res, next) => {
@@ -14,14 +17,7 @@ app.use(express.json());
 // });
 
 
-// Added endpoint to satisfy frontend requests to /api/get
-app.get("/api/get", (req, res) => {
-  const notes = [
-    { id: 1, title: "Todo 1", content: "Buy milk" },
-    { id: 2, title: "Todo 2", content: "Walk dog" }
-  ];
-  res.json({ success: true, notes });
-});
+
 
 app.listen(5000, () => {
   console.log("Server is running on port: 5000");
