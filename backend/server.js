@@ -1,6 +1,6 @@
 import express from "express";
 // const express = require('express')
-import notesRoutes from "./routes/notesRoutes.js";
+import notesRoutes from "./src/routes/notesRoutes.js";
 const app = express();
 
 app.use(express.json());
@@ -15,6 +15,8 @@ app.use("/api/notes", notesRoutes);
 //   if (req.method === "OPTIONS") return res.sendStatus(204);
 //   next();
 // });
+
+// mongodb+srv://thinkboardbduser:thinkboarddbpassword@cluster0.igl3scs.mongodb.net/?appName=Cluster0
 
 
 
