@@ -1,10 +1,16 @@
 import express from "express";
 // const express = require('express')
-import notesRoutes from "./src/routes/notesRoutes.js";
+import notesRoutes from "./routes/notesRoutes.js";
+import { connectDb } from "./config/db.js";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const app = express();
 
 app.use(express.json());
 
+connectDb();
 app.use("/api/notes", notesRoutes);
 
 // // Simple CORS middleware for local development (replace with `cors` in production)
@@ -16,7 +22,7 @@ app.use("/api/notes", notesRoutes);
 //   next();
 // });
 
-// mongodb+srv://thinkboardbduser:thinkboarddbpassword@cluster0.igl3scs.mongodb.net/?appName=Cluster0
+
 
 
 
