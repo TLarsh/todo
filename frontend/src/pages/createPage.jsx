@@ -5,8 +5,8 @@ const CreatePage = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
-  const handleSubmit = () => {
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
   }
   return <div className="min-h-screen bg-base-200">
     <div className="container mx-auto px-4 py-8">
@@ -45,6 +45,11 @@ const CreatePage = () => {
                 />
               </div>
 
+              <div className="card-actions justify-end">
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? "Creating...": "Create Note"}
+                </button>
+              </div>
             </form>
           </div>
         </div>
