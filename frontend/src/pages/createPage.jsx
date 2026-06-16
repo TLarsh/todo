@@ -35,14 +35,13 @@ const CreatePage = () => {
 
               <div className="form-control mb-4">
                 <label className="label">
-                  <span className="label-text">Title</span>
+                  <span className="label-text">Content</span>
                 </label>
-                <input
-                  type="text"
-                  placeholder="Note Title"
-                  className="input input-bordered"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                <textarea
+                  placeholder="write your note here"
+                  className="textarea textarear-bordered"
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
                 />
               </div>
 
