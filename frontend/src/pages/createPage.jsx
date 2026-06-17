@@ -21,15 +21,17 @@ const CreatePage = () => {
 
     setLoading(true);
     try{
-      await axios.post("http://localhost:5000/api/notes", (
+      await axios.post("http://localhost:5000/api/notes", {
         title,
         content
-      ))
+      })
       toast.success("Note created Successfully!")
       navigate("/")
     } catch (error) {
       console.log("Error creating note", error);
       toast.error("Failed to create note");
+    } finally {
+      setLoading(false);
     }
   }
   return <div className="min-h-screen bg-base-200">
