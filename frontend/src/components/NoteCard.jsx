@@ -8,7 +8,7 @@ const NoteCard = ({ note, setNotes }) => {
     e.preventDefault();
     if (window.confirm("Are you sure you want to delete this note?")) {
       try {
-        await api.delete(`/api/notes/${id}`);
+        await api.delete(`/notes/${id}`);
         setNotes(prevNotes => prevNotes.filter(note => note._id !== id));
         toast.success("Note deleted successfully");
         // Optionally, you can add code here to remove the note from the UI
