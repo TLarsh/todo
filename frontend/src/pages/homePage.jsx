@@ -3,6 +3,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import RateLimitedUI from "../components/RateLimitedUI";
 import toast from "react-hot-toast";
+import NotesNotFound from "../components/NotesNotFound";
 import NoteCard from "../components/NoteCard";
 import api from "../lib/axios"
 // import Note from "../../../backend/src/models/Note";
