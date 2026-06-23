@@ -85,8 +85,8 @@ const NoteDetailPage = () => {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const response = await api.get(`/notes/${id}`);
-        setNote(response.data);
+        const res = await api.get(`/notes/${id}`);
+        setNote(res.data);
       } catch (error) {
         console.error("Error fetching note:", error);
         toast.error("Failed to fetch note");
@@ -144,10 +144,23 @@ const NoteDetailPage = () => {
               {saving ? "Deleting..." : "Delete Note"}
             </button>
           </div>
-          <div className="card bg-base-100"></div>
-
-          {/* <h1 className="text-2xl font-bold mb-4">{note.title}</h1>
-          <p className="whitespace-pre-wrap">{note.content}</p> */}
+          <div className="card bg-base-100">
+            <div className="card-body">
+              <div className="form-control mb-4">
+                <label className="label">
+                  <span className="label-text">Title</span>
+                </label>
+                <input 
+                  type="text" 
+                  className="input input-bordered" 
+                  placeholder="Enter note title"
+                  value={note.title} 
+                  onChange={(e) => setNote({...note, title: e.target.value})}
+                />
+              </div>
+              
+            </div>
+          </div>
         </div>
       </div>
     </div>
