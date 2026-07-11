@@ -166,11 +166,16 @@ const NoteDetailPage = () => {
                   <span className="label-text">Content</span>
                 </label>
                 <textarea
-                  className="textarea textarea-bordered"
+                  className="textarea textarea-bordered h-32"
                   placeholder="Enter note content"
                   value={note.content}
                   onChange={(e) => setNote({...note, content: e.target.value})}
                 />
+              </div>
+              <div className="card-actions justify-end">
+                <button className="btn btn-primary" onClick={handleSave} disabled={saving}>
+                  {saving ? "Saving..." : "Save Changes"}
+                </button>
               </div>
 
             </div>
