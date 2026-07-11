@@ -99,8 +99,8 @@ const NoteDetailPage = () => {
   }, [id]);
 
   const handleDelete = async () => {
-    if (!confirm("Delete this note?")) return;
-    setSaving(true);
+    if (!window.confirm("Do you really want to elete this note?")) return;
+    // setSaving(true);
     try {
       await api.delete(`/notes/${id}`);
       toast.success("Note deleted");
@@ -108,11 +108,29 @@ const NoteDetailPage = () => {
     } catch (error) {
       console.error("Delete failed:", error);
       toast.error("Failed to delete note");
-    } finally {
-      setSaving(false);
     }
+    //  finally {
+    //   setSaving(false);
+    // }
   };
-  
+
+  const handleSave = async () => {
+    if (!note.title || !note.content.trim()) {
+      toast.error("Title and content are required");
+      return;
+    }
+    setSaving(true);
+    try {
+      await api.put(`/notes/${id}`, note);
+      toast.success("Note updated");
+    } catch (error) {
+      console.error("Update failed:", error);
+      toast.error("Failed to update note");
+    }
+    // finally {
+    //   setSaving(false);
+    // }
+  };
 
   if (loading) {
     return (
