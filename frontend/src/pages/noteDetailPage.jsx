@@ -108,8 +108,8 @@ const NoteDetailPage = () => {
     } catch (error) {
       console.error("Delete failed:", error);
       toast.error("Failed to delete note");
-    }
-    //  finally {
+    } 
+    // finally {
     //   setSaving(false);
     // }
   };
@@ -126,11 +126,11 @@ const NoteDetailPage = () => {
     } catch (error) {
       console.error("Update failed:", error);
       toast.error("Failed to update note");
+    } finally {
+      setSaving(false);
     }
-    // finally {
-    //   setSaving(false);
-    // }
-  };
+  }
+  
 
   if (loading) {
     return (
@@ -177,25 +177,25 @@ const NoteDetailPage = () => {
                 />
               </div>
 
-             
-
               <div className="form-control mb-4">
                 <label className="label">
                   <span className="label-text">Content</span>
                 </label>
-                <textarea
-                  className="textarea textarea-bordered h-32"
-                  placeholder="Enter note content"
-                  value={note.content}
+                <input 
+                  type="text" 
+                  className="textarea textarea-bordered -h32" 
+                  placeholder="Type your note here..."
+                  value={note.content} 
                   onChange={(e) => setNote({...note, content: e.target.value})}
                 />
               </div>
+
               <div className="card-actions justify-end">
                 <button className="btn btn-primary" onClick={handleSave} disabled={saving}>
                   {saving ? "Saving..." : "Save Changes"}
                 </button>
               </div>
-
+              
             </div>
           </div>
         </div>
